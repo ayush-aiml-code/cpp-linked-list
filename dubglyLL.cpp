@@ -126,6 +126,21 @@ void add_after(int x,int y){
     temp->next=p;
 }
 
+void revers()
+{
+    temp = first;
+    p = NULL;
+    while(temp != NULL){
+        p = temp->prev;
+        temp->prev = temp->next;
+        temp->next = p;
+
+        temp = temp->prev;
+    }
+    if(p!=NULL)
+        first=p->prev;
+ }
+
 void swap_last_2ndLast(){
     temp=first;
     while (temp->next!=NULL)
@@ -219,6 +234,10 @@ int main(){
     cout<<endl;
     cout<<"Delete After(50):-"<<endl;
     del_after(50);
+    dis();
+    cout<<endl;
+    cout<<"Rverse:-"<<endl;
+    revers();
     dis();
     cout<<endl;
     cout<<"Swap last and 2nd last:-"<<endl;
