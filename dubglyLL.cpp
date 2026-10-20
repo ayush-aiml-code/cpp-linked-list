@@ -19,6 +19,18 @@ void create(int x){
     first->prev=NULL;
 }
 
+void add_node(int x){
+    temp=first;
+    while(temp->next!=NULL){
+        temp=temp->next;
+    }
+    ttemp=new Node;
+    ttemp->data=x;
+    ttemp->prev=temp;
+    ttemp->next=NULL;
+    temp->next=ttemp;
+}
+
 void add_before_1st(int x){
     temp=first;
     ttemp=new Node;
@@ -40,6 +52,49 @@ void add_after_last(int x){
     ttemp->next=NULL;
     ttemp->prev=temp;
     temp->next=ttemp;
+}
+
+void del_before_1st(){
+    temp=first;
+    first=first->next;
+    first->prev=NULL;
+    delete temp;
+}
+
+void del_after_last(){
+    temp=first;
+    while (temp->next!=NULL){
+       ttemp=temp;
+       temp=temp->next;
+    }
+    ttemp->next=NULL;
+    delete temp;
+}
+
+void del_before(int x){
+    temp=first;
+    while (temp->data!=x){
+        ttemp=temp;
+        temp=temp->next;
+    }
+    p=ttemp->prev;
+    p->next=temp;
+    temp->prev=p;
+    delete ttemp;
+}
+
+void del_after(int x){
+    temp=first;
+    while (temp->data!=x)
+    {
+        temp=temp->next;
+    }
+    ttemp=temp;
+    temp=temp->next;
+    p=temp->next;
+    ttemp->next=p;
+    p->prev=ttemp;
+    delete temp;
 }
 
 void add_before(int x,int y){
@@ -69,18 +124,6 @@ void add_after(int x,int y){
     p->next=ttemp;
     p->prev=temp;
     temp->next=p;
-}
-
-void add_node(int x){
-    temp=first;
-    while(temp->next!=NULL){
-        temp=temp->next;
-    }
-    ttemp=new Node;
-    ttemp->data=x;
-    ttemp->prev=temp;
-    ttemp->next=NULL;
-    temp->next=ttemp;
 }
 
 void swap_last_2ndLast(){
@@ -154,12 +197,28 @@ int main(){
     add_after_last(75);
     dis();
     cout<<endl;
+    cout<<"Delete Before 1st Node:-"<<endl;
+    del_before_1st();
+    dis();
+    cout<<endl;
+    cout<<"Delete After Last Node:-"<<endl;
+    del_after_last();
+    dis();
+    cout<<endl;
     cout<<"add Before (50):-"<<endl;
     add_before(50,45);
     dis();
     cout<<endl;
     cout<<"add After (50):-"<<endl;
     add_after(50,55);
+    dis();
+    cout<<endl;
+    cout<<"Delete Before(50):-"<<endl;
+    del_before(50);
+    dis();
+    cout<<endl;
+    cout<<"Delete After(50):-"<<endl;
+    del_after(50);
     dis();
     cout<<endl;
     cout<<"Swap last and 2nd last:-"<<endl;
