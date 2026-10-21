@@ -145,6 +145,20 @@ void swap_last_2ndLast(){
    ttemp->next=p; 
 }
 
+void revers(){
+    p=NULL;
+    temp=first;
+    while (temp!=NULL)
+    {
+        ttemp=temp;
+        temp=temp->next;
+        ttemp->next=p;
+        p=ttemp;
+    }
+    if(p!=NULL)
+        first=p;
+}
+
 void display(){
     temp=first;
     while (temp!=NULL)
@@ -196,6 +210,10 @@ int main(){
     cout<<endl;
     cout<<"Delete After:-"<<endl;
     del_after(40);
+    display();
+    cout<<endl;
+    cout<<"Revers :-"<<endl;
+    revers();
     display();
     cout<<endl;
     cout << "Swap First and Second Node:-" << endl;
