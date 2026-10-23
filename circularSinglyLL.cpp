@@ -75,6 +75,32 @@ void del_last(){
     delete temp;
 }
 
+void add_before(int x, int y){
+    temp=first;
+    while (temp->data!=x)
+    {
+       ttemp=temp;
+       temp=temp->next;
+    }
+    p=new Node;
+    p->data=y;
+    p->next=temp;
+    ttemp->next=p;
+}
+
+void add_after(int x,int y){
+    temp=first;
+    while (temp->data!=x)
+    {
+       temp=temp->next;
+    }
+    ttemp=temp->next;
+    p=new Node;
+    p->data=y;
+    p->next=ttemp;
+    temp->next=p;
+}
+
 void display(){
     temp=first;
     do{
@@ -92,12 +118,29 @@ int main(){
     add_node(40);
     add_node(50);
     display();
+    cout<<endl;
+    cout<<"Add a node Before 1st:-"<<endl;
     add_before_1st(50);
     display();
+    cout<<endl;
+    cout<<"Add a node After Last:-"<<endl;
     add_after_Last(60);
     display();
+    cout<<endl;
+    cout<<"Delete a First node:-"<<endl;
     Del_first();
     display();
+    cout<<endl;
+    cout<<"Delete a Last node:-"<<endl;
     del_last();
     display();
+    cout<<endl;
+    cout<<"Add Before:-"<<endl;
+    add_before(30,25);
+    display();
+    cout<<endl;
+    cout<<"Add After:-"<<endl;
+    add_after(30,35);
+    display();
+    cout<<endl;
 }
